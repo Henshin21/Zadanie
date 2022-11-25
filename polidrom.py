@@ -1,2 +1,5 @@
-def toPalindrom(s):
-    return s == s[::-1]
+def Palindrom(x):
+  print(x == x[::-1])
+
+Palindrom("poop")
+  
