@@ -10,6 +10,14 @@ if math == '1':
     logging.debug(f"Dodaje {number} i {number_two} ")
     sum = int(number) + int(number_two)
     print(f"Wynik to {sum}")
+    choice = input("Czy chcesz dorzucić jeszcze jeden składnik? Y/N: ")
+    if choice == 'y':
+        number_three = input("Podaj składnik 3.")
+        logging.debug(f"Dodaje składnik 3. {number_three} do przprzedniej sumy {sum} ")
+        secondsum = int(sum) + int(number_three)
+        print(f"Nowy wynik to {secondsum}")
+    elif choice == 'n':
+        exit(1)
 if math == '2':
     logging.info("Wykonujemy odejmowanie!")
     number = input("Podaj składnik 1.")
