@@ -32,6 +32,14 @@ if math == '3':
     print(f"Mnoże {number} i {number_two} ")
     mult = int(number) * int(number_two)
     print(f"Wynik to {mult}")
+    choice = input("Czy chcesz dorzucić jeszcze jeden składnik? Y/N: ")
+    if choice == 'y':
+        number_three = input("Podaj składnik 3.")
+        logging.debug(f"Dodaje składnik 3. {number_three} do przprzedniego iloczynu {mult} ")
+        secondmult = int(mult) * int(number_three)
+        print(f"Nowy wynik to {secondmult}")
+    elif choice == 'n':
+        exit(1)
 if math == '4':
     logging.info("Wykonujemy dzielenie!")
     number = input("Podaj składnik 1.")
@@ -40,5 +48,5 @@ if math == '4':
     div = int(number) / int(number_two)
     print(f"Wynik to {div}")
 if math == 5:
-    logging.error("Nie ma takiej funkcji!!")
+    logging.warning('Nie ma takiej funkcji!!')
     
