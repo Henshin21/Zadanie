@@ -35,4 +35,7 @@ def create_contacts(contact_type, amount):
 
 
 contacts = create_contacts("business", 4)
+for contact in contacts:
+    contact.contact()
+    print(f"Wizytówka: {contact.name} {contact.surname} ({contact.label_length} znaków)")
 
