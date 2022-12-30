@@ -10,32 +10,33 @@ class BaseContact():
         self.email = email
 
     def contact(self):
-        print(f"Wybieram numer {self.number} i dzownie do {self.name} {self.surname}")
+        print(f"Wybieram numer {self.number} i dzwonię do {self.name} {self.surname}")
+
+    @property
+    def label_length(self):
+        return len(self.name + self.surname)
 
 class BusinessContact(BaseContact):
-    def __init__(self, name, surname, number, email, position, company):
+    def __init__(self, name, surname, number, email, position, company, business_number):
         super().__init__(name, surname, number, email)
         self.position = position
         self.company = company
+        self.business_number = business_number
 
     def contact(self):
-        print(f"Wybieram numer {self.number} i dzownie do {self.name} {self.surname}({self.postion} w {self.comapny})")
+        print(f"Wybieram numer {self.business_number} i dzwonię do {self.name} {self.surname} ({self.position} w {self.company})")
     
     @property
-    def label_lenght(self):
+    def label_length(self):
         return len(self.name + self.surname)
 
 def create_contacts(contact_type, amount):
     if contact_type == "base":
-        return [BaseContact(fake.first_name(), fake.last_name(),fake.number(),fake.email()) for x in range(amount)]
+        return [BaseContact(fake.first_name(), fake.last_name(),fake.phone_number(),fake.email()) for x in range(amount)]
     elif contact_type == "Business":
-        return [BusinessContact(fake.first_name(), fake.last_name(),fake.number(),fake.email(), fake.position(), fake.company()) for x in range(amount)]
-    else:
-        return []
-
+        return [BusinessContact(fake.first_name(), fake.last_name(),fake.phone_number(),fake.email(), fake.job(), fake.company(), fake.phone_number()) for x in range(amount)]
 
 contacts = create_contacts("business", 4)
 for contact in contacts:
     contact.contact()
-    print(f"Wizytówka: {contact.name} {contact.surname} ({contact.label_length} znaków)")
-
+print(create_contacts("business", 4))
