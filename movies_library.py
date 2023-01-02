@@ -1,31 +1,29 @@
-class Movies():
-    def __init__(self, titel, year_of_publication, genre, plays_count):
-        self.titel = titel
+import random
+
+class Media:
+    def __init__(self, title, year_of_publication, genre, plays_count):
+        self.title = title
         self.year_of_publication = year_of_publication
         self.genre = genre
         self.plays_count = plays_count
 
-        self.current_watch_count = 0
-    
-    def play(self,view = 1):
-        self.current_watch_count += view
+    def play(self, view=1):
+        self.plays_count += view
 
-    def __str__(self):
-        return f"{self.title} ({self.year})"
-    
+    def __repr__(self):
+        return f"{self.title} ({self.year_of_publication})"
 
-class TVseries():
-    def __init__(self, titel, year_of_publication, genre, chapter_number, season_number, plays_count):
-        self.titel = titel
-        self.year_of_publication = year_of_publication
-        self.genre = genre
+
+class Movie(Media):
+    def __init__(self, title, year_of_publication, genre, plays_count):
+        super().__init__(title, year_of_publication, genre, plays_count)
+
+
+class TVSeries(Media):
+    def __init__(self, title, year_of_publication, genre, chapter_number, season_number, plays_count):
+        super().__init__(title, year_of_publication, genre, plays_count)
         self.chapter_number = chapter_number
         self.season_number = season_number
-        self.plays_count = plays_count
 
-        self.current_watch_count = 0
-
-    def play(self,view = 1):
-        self.current_watch_count += view
-
-    
+    def __repr__(self):
+        return f"{self.title} S{self.season_number:02d}E{self.chapter_number:02d}"
