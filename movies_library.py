@@ -27,3 +27,14 @@ class TVSeries(Media):
 
     def __repr__(self):
         return f"{self.title} S{self.season_number:02d}E{self.chapter_number:02d}"
+
+class Library:
+    def __init__(self, movies, tv_series):
+        self.movies = movies
+        self.tv_series = tv_series
+
+    def get_movies(self):
+        return sorted([movie for movie in self.movies], key=lambda x: x.title)
+
+    def get_tv_series(self):
+        return sorted([tv_series for tv_series in self.tv_series], key=lambda x: x.title)
