@@ -38,3 +38,12 @@ class Library:
 
     def get_tv_series(self):
         return sorted([tv_series for tv_series in self.tv_series], key=lambda x: x.title)
+
+    def search(self, title):
+        for movie in self.movies:
+            if movie.title == title:
+                return movie
+        for tv_series in self.tv_series:
+            if tv_series.title == title:
+                return tv_series
+        return None
