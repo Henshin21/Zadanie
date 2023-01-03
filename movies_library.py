@@ -47,3 +47,9 @@ class Library:
             if tv_series.title == title:
                 return tv_series
         return None
+
+    def generate_views(self):
+        all_media = self.movies + self.tv_series
+        random_media = random.choice(all_media)
+        random_views = random.randint(1, 100)
+        random_media.play(random_views)
