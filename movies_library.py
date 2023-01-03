@@ -53,3 +53,31 @@ class Library:
         random_media = random.choice(all_media)
         random_views = random.randint(1, 100)
         random_media.play(random_views)
+
+#top_titles to nie moje, to była pomoc od discorda. wpisałem jeszcze all_content gdyby nie wybrali movies lub tv_series
+
+    def top_titles(self, amount=10, content_type=None):
+        if content_type == "movies":
+            movies = sorted(self.movies, key=lambda x: x.plays_count, reverse=True)[:amount]
+            return movies
+        elif content_type == "tv_series":
+            tv_series = sorted(self.tv_series, key=lambda x: x.plays_count,reverse=True)[:amount]
+            return tv_series
+        else:
+            all_content = self.movies + self.tv_series
+            sorted_content = sorted(all_content, key=lambda x: x.plays_count, reverse=True)[:amount]
+            return sorted_content    
+    
+#test 
+movie1 = Movie("Och, Karol", 1985, "Dramat", 0)
+movie2 = Movie("Nie zadzieraj z fryzjerem", 2008, "Komedia", 0)
+tv_series1 = TVSeries("Big Mouth", 2017, "Komedia", 1, 1, 0)
+tv_series2 = TVSeries("Niesamowity świat Gumball'a", 2011, "Bajka", 2, 1, 0)
+
+movies = [movie1, movie2]
+tv_series = [tv_series1, tv_series2]
+
+library = Library(movies, tv_series)
+top_movies = library.top_titles(amount=5, content_type="movies")
+top_tv_series = library.top_titles(amount=5, content_type="tv_series")
+top_all = library.top_titles(amount=10)
