@@ -32,12 +32,13 @@ class Library:
     def __init__(self, movies, tv_series):
         self.movies = movies
         self.tv_series = tv_series
+        self.media = movies + tv_series
 
     def get_movies(self):
-        return sorted([movie for movie in self.movies], key=lambda x: x.title)
-
+        return sorted([video for video in self.media if isinstance(video, Movie)], key=lambda x: x.title)
+    
     def get_tv_series(self):
-        return sorted([tv_series for tv_series in self.tv_series], key=lambda x: x.title)
+        return sorted([video for video in self.media if isinstance(video, TVSeries)], key=lambda x: x.title)
 
     def search(self, title):
         for movie in self.movies:
@@ -53,8 +54,6 @@ class Library:
         random_media = random.choice(all_media)
         random_views = random.randint(1, 100)
         random_media.play(random_views)
-
-#top_titles to nie moje, to była pomoc od discorda. wpisałem jeszcze all_content gdyby nie wybrali movies lub tv_series
 
     def top_titles(self, amount=10, content_type=None):
         if content_type == "movies":
